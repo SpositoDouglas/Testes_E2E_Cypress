@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Bem-vindo!</h1>
+    <h2 id="home-message" style="color: green;"></h2>
+
+    <script>
+
+        const msg = localStorage.getItem('successMessage');
+        if (msg) {
+            document.getElementById('home-message').textContent = msg;
+            localStorage.removeItem('successMessage');
+        }
+    </script>
+</body>
+</html>
