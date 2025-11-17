@@ -1,54 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
+    const cadastroForm = document.getElementById('cadastro-form');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const loginButton = document.getElementById('btn-login');
+    const cadastroButton = document.getElementById('btn-cadastro');
     const messageElement = document.getElementById('message');
 
 
     function validateForm() {
-
         const emailValido = emailInput.value.trim() !== '';
         const senhaValida = passwordInput.value.trim() !== '';
-        
-        if (emailValido && senhaValida) {
-            loginButton.disabled = false;
-        } else {
-
-            loginButton.disabled = true;
-        }
+        cadastroButton.disabled = !(emailValido && senhaValida);
     }
-
 
     emailInput.addEventListener('input', validateForm);
     passwordInput.addEventListener('input', validateForm);
 
 
-    loginForm.addEventListener('submit', async (e) => {
+    cadastroForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         messageElement.textContent = '';
+        messageElement.className = '';
 
         const email = emailInput.value;
         const password = passwordInput.value;
 
         try {
-            const response = await fetch('http://localhost:3000/login', {
+            const response = await fetch('http://localhost:3000/cadastro', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, senha: password })
+                body: JSON.stringify({ email, senha: password })
             });
 
             const data = await response.json();
 
             if (response.ok) {
 
-                localStorage.setItem('successMessage', data.message); 
+                messageElement.textContent = data.message;
+                messageElement.className = 'success-message';
 
-                window.location.href = '/home.html'; 
+
+                setTimeout(() => {
+                    window.location.href = '/login.html';
+                }, 2000);
+            
             } else {
 
-                messageElement.textContent = data.message; 
-
+                messageElement.textContent = data.message;
             }
         } catch (error) {
             messageElement.textContent = 'Erro ao conectar com a API.';

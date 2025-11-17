@@ -8,8 +8,8 @@ describe('Fluxo de Autenticação (Login)', () => {
 
     it('1. Deve realizar o login com sucesso', () => {
 
-      cy.get('#email').type('usuario@teste.com');
-      cy.get('#password').type('123');
+      cy.get('#email').type('user@test.com');
+      cy.get('#password').type('12345678');
   
 
       cy.get('#btn-login').click();

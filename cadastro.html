@@ -2,12 +2,12 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Página de Login</title>
+    <title>Página de Cadastro</title>
     <link rel="stylesheet" href="style.css"> </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
-        <form id="login-form">
+        <h1>Cadastro</h1>
+        <form id="cadastro-form">
             <div class="input-group">
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" required>
@@ -16,14 +16,13 @@
                 <label for="password">Senha:</label>
                 <input type="password" id="password" required>
             </div>
-            <button type="submit" id="btn-login" disabled>Entrar</button>
+            <button type="submit" id="btn-cadastro" disabled>Cadastrar</button>
         </form>
         <p id="message"></p>
         
         <p class="navigation-link">
-            Não tem conta? <a href="/cadastro.html">Cadastre-se</a>
+            Já tem conta? <a href="/login.html">Faça login</a>
         </p>
     </div>
-    <script src="login.js"></script>
-</body>
+    <script src="cadastro.js"></script> </body>
 </html>
